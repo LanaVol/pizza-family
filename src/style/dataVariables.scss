@@ -1,0 +1,70 @@
+// for dark theme
+$color-orange: #ff8c42;
+$color-orange2: #ff5b00;
+$color-black: #151515;
+$color-blackFonts: #1e1e1e;
+$color-light: #f4f4f4;
+$color-white: #fff;
+$color-beige: #ffddc8;
+$color-brown: #832804;
+$color-green: #22832b;
+$font-quicksand: "Quicksand", sans-serif;
+$font-kosugi: "Kosugi", sans-serif;
+$font-kaushan: "Kaushan Script", cursive;
+
+// міксини
+@mixin fonts($ff, $fs, $fw) {
+  font-family: $ff;
+  font-size: $fs;
+  font-weight: $fw;
+}
+
+@mixin flex-center() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  max-width: 1620px;
+  margin: 0 auto;
+  padding: 0px 90px;
+}
+
+// dark/light mood
+.dark {
+  background-color: $color-black;
+}
+.light {
+  background-color: $color-light;
+}
+
+// colors for fonts
+.beige {
+  color: $color-beige;
+}
+.brown {
+  color: $color-brown;
+}
+
+.white-fonts {
+  color: $color-white;
+}
+
+.black-fonts {
+  color: $color-blackFonts;
+}
+
+// MEDIA SCREEN from 0 to 1050
+@media screen and (max-width: 1050px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .home > .container,
+  .menu > .container,
+  .offer > div,
+  .contacts .container {
+    display: block;
+  }
+}

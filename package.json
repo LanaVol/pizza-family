@@ -1,0 +1,47 @@
+{
+  "name": "pizza-family",
+  "version": "1.0.0",
+  "description": "Website for ordering pizza with constructor of ingredients",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --mode development",
+    "start": "cross-env NODE_ENV=development webpack serve --open",
+    "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
+    "build": "cross-env NODE_ENV=production webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LanaVol/pizza-family.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "webpack",
+    "oop"
+  ],
+  "author": "LanaVol <svolosh4yk@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LanaVol/pizza-family/issues"
+  },
+  "homepage": "https://github.com/LanaVol/pizza-family#readme",
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.8.1",
+    "css-minimizer-webpack-plugin": "^5.0.1",
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "sass": "^1.69.4",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+    "terser-webpack-plugin": "^5.3.9",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "sweetalert2": "^11.9.0"
+  }
+}

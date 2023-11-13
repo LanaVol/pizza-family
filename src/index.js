@@ -1,4 +1,6 @@
 import "./style/style.scss";
+import "./style/header.scss";
+import "./style/firstSectionStyles.scss";
 import "./script/scrolling.js";
 import "./script/accordion.js";
 import "./script/changeMood.js";

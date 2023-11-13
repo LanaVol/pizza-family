@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mania Pizza Family</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Kosugi&family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header dark">
+      <div class="container">
+        <figure class="header__logo">
+          <img src="./img/01logo.svg" alt="Logo" />
+        </figure>
+
+        <nav>
+          <ul class="header__list">
+            <li class="list-item">
+              <a href="#home">Home</a>
+            </li>
+            <li class="list-item">
+              <a href="#menu">Menu</a>
+            </li>
+            <li class="list-item coupon">
+              <a> Specials & Coupons</a>
+            </li>
+            <li class="list-item">
+              <a href="#contacts">Contact Us</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="nav__burger">
+          <img src="./img/burger.svg" alt="Menu icon" />
+        </div>
+      </div>
+    </header>
+
+    <main class="dark">
+      <!-- First screen -->
+      <section class="home" id="home">
+        <div class="container">
+          <article class="announce">
+            <h2 class="announce__title">Pizza family</h2>
+            <p class="announce__subtitle">
+              People disappoint,<br />
+              But pizza never does.
+            </p>
+            <div class="announce__input-box">
+              <input type="text" />
+              <button type="button" class="searchBtn">
+                <img src="./img/01search.svg" alt="Search-icon" /> Search
+                Location
+              </button>
+            </div>
+
+            <button type="button" class="tryNowBtn">Try now</button>
+          </article>
+
+          <figure>
+            <img src="./img/01Right.png" alt="Main-img" class="mainImg" />
+          </figure>
+        </div>
+
+        <figure>
+          <img
+            src="./img/01themeBtn.svg"
+            alt="Change page-color"
+            class="changeThemeBtn"
+          />
+        </figure>
+      </section>
+
+      <!-- Second screen -->
+      <section class="menu" id="menu">
+        <h2 class="menu__title">Menu</h2>
+
+        <div class="container">
+          <figure class="menu__img">
+            <img src="./img/02img.png" alt="Pizza" />
+          </figure>
+
+          <div class="menu__main-block">
+            <article class="menu__block beige">
+              <h3 class="block-title">Slice-pizza</h3>
+              <div class="block-items">
+                <ul>
+                  <li>Pepperoni slice</li>
+                  <li>........</li>
+                  <li>$3.7</li>
+                </ul>
+
+                <ul>
+                  <li>Country slice</li>
+                  <li>........</li>
+                  <li>$4.3</li>
+                </ul>
+
+                <ul>
+                  <li>Italian slice</li>
+                  <li>........</li>
+                  <li>$3.5</li>
+                </ul>
+
+                <ul>
+                  <li>Beverian slice</li>
+                  <li>........</li>
+                  <li>$3.8</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="menu__block beige">
+              <h3 class="block-title">Slice-pizza</h3>
+              <div class="block-items">
+                <ul>
+                  <li>Hawaiian slice</li>
+                  <li>........</li>
+                  <li>$4.2</li>
+                </ul>
+                <ul>
+                  <li>Italian slice</li>
+                  <li>........</li>
+                  <li>$3.5</li>
+                </ul>
+                <ul>
+                  <li>Country slice</li>
+                  <li>........</li>
+                  <li>$4.3</li>
+                </ul>
+                <ul>
+                  <li>Provence slice</li>
+                  <li>........</li>
+                  <li>$3.8</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="menu__block beige">
+              <h3 class="block-title">Gourmet Pizza</h3>
+              <div class="block-items gourmet">
+                <ul class="block-item">
+                  <div>
+                    <li class="item-name">Barbecue pizza</li>
+                    <li class="item-info">
+                      Chicken, Barbecue Sauce, Mozzarella, Onions, Mushrooms,
+                      Bacon
+                    </li>
+                  </div>
+                  <li class="item-price">$14.99</li>
+                </ul>
+
+                <ul class="block-item">
+                  <div>
+                    <li class="item-name">Pepperoni Pizza</li>
+                    <li class="item-info">
+                      Barbecue sauce, Mozzarella, Tomatoes, Pepperoni
+                    </li>
+                  </div>
+                  <li class="item-price">$13.99</li>
+                </ul>
+
+                <ul class="block-item">
+                  <div>
+                    <li class="item-name">Carbonara Pizza</li>
+                    <li class="item-info">
+                      Mozzarella, Alfredo sauce, Onions, Mushrooms, Ham, Bacon
+                    </li>
+                  </div>
+                  <li class="item-price">$14.99</li>
+                </ul>
+
+                <ul class="block-item">
+                  <div>
+                    <li class="item-name">Country Pizza</li>
+                    <li class="item-info">
+                      Mozzarella, Pickled cucumbers, Onion, Garlic sauce,
+                      Mushrooms, Ham, Bacon
+                    </li>
+                  </div>
+                  <li class="item-price">$15.99</li>
+                </ul>
+              </div>
+            </article>
+            <div class="menu__block-btn">
+              <button
+                type="button"
+                class="madeOwnBtn animate__animated animate__shakeY"
+              >
+                Make Own Pizza
+              </button>
+              <button type="button" class="menuBtn">Explore More</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Third screen -->
+      <section class="offer hideOfferSection" id="offer">
+        <div class="container">
+          <div class="ownPizza">
+            <img src="./img/1440-pizza-piece.jpg" alt="Image" />
+          </div>
+
+          <h2 class="menu__title">Make Pizza on Your Own</h2>
+        </div>
+
+        <div class="container">
+          <div class="constructor">
+            <div class="preview" draggable="true">
+              <div class="prevInfo">Drag the ingredients here:</div>
+              <div class="prevImg">
+                <img
+                  src="./img/ingredients/empty.svg"
+                  alt="Pizza preview"
+                  class="previewPizza"
+                />
+              </div>
+              <div class="prevInfo">
+                <h3></h3>
+              </div>
+
+              <div class="previewSize"></div>
+              <div class="previewPrice">Price: <span></span> $</div>
+              <div class="previewBtn">
+                <button type="button" class="madeOwnBtn addToOrder">
+                  Add To Order
+                </button>
+                <button type="button" class="cleanAll">Clean All</button>
+              </div>
+            </div>
+
+            <div class="constructor-row dark-gray white-fonts">
+              <h3>Step 1. Choose the size</h3>
+
+              <div class="constructor-block">
+                <div class="sizeS cake">
+                  <label for="sizeS">
+                    <img
+                      src="./img/sizeS.svg"
+                      alt="Small size icon"
+                      draggable="true"
+                      data-name="Size S"
+                    />
+                    <span>Size S 6$</span>
+                  </label>
+                  <input type="radio" id="sizeS" name="size" />
+                </div>
+
+                <div class="sizeM cake">
+                  <label for="sizeM">
+                    <img
+                      src="./img/sizeM.svg"
+                      alt="Medium size icon"
+                      draggable="true"
+                      data-name="Size M"
+                    />
+                    <span>Size M 7$</span>
+                  </label>
+                  <input type="radio" id="sizeM" name="size" />
+                </div>
+
+                <div class="sizeL cake">
+                  <label for="sizeL">
+                    <img
+                      src="./img/sizeL.svg"
+                      alt="Large size icon"
+                      draggable="true"
+                      data-name="Size L"
+                    />
+                    <span>Size L 8$</span>
+                  </label>
+
+                  <input type="radio" id="sizeL" name="size" />
+                </div>
+              </div>
+            </div>
+
+            <div class="constructor-row dark-gray white-fonts">
+              <h3>Step 2. Choose the sauce</h3>
+
+              <div class="constructor-block sauces">
+                <div class="sauce">
+                  <label for="sauce1">
+                    <img
+                      src="./img/ingredients/ketchup.jpg"
+                      alt="Sauce icon"
+                      data-name="ketchup"
+                      draggable="true"
+                    />
+                    <span>Ketchup 1$</span>
+                  </label>
+                  <input type="radio" id="sauce1" name="sauce" />
+                </div>
+
+                <div class="sauce">
+                  <label for="sauce2">
+                    <img
+                      src="./img/ingredients/cheeseSauce.jpg"
+                      alt="Sauce icon"
+                      data-name="cheeseSauce"
+                      draggable="true"
+                    />
+                    <span>Cheese 1$</span>
+                  </label>
+                  <input type="radio" id="sauce2" name="sauce" />
+                </div>
+
+                <div class="sauce">
+                  <label for="sauce3">
+                    <img
+                      src="./img/ingredients/sauceBarb.jpg"
+                      alt="Sauce icon"
+                      data-name="barbecue"
+                      draggable="true"
+                    />
+                    <span>Barbecue 1$</span>
+                  </label>
+                  <input type="radio" id="sauce3" name="sauce" />
+                </div>
+              </div>
+            </div>
+
+            <div class="ingredients">
+              <div class="constructor-row dark-gray white-fonts">
+                <h3>Step 3. Choose the ingredients</h3>
+
+                <div class="constructor-block">
+                  <div class="ingredient" draggable="true">
+                    <label for="pepperoni">
+                      <img
+                        src="./img/ingredients/pepperoni.svg"
+                        alt="Pepperoni"
+                        data-name="pepperoni"
+                      />
+                      <span>4 $</span>
+                    </label>
+                    <input type="checkbox" id="pepperoni" />
+                  </div>
+
+                  <div class="ingredient" draggable="true">
+                    <label for="bacon">
+                      <img
+                        src="./img/ingredients/bacon.svg"
+                        alt="Bacon"
+                        data-name="bacon"
+                      />
+                      <span>4 $</span>
+                    </label>
+                    <input type="checkbox" id="bacon" />
+                  </div>
+
+                  <div class="ingredient" draggable="true">
+                    <label for="mushrooms">
+                      <img
+                        src="./img/ingredients/mushrooms.svg"
+                        alt="Mushrooms"
+                        data-name="mushrooms"
+                      />
+                      <span>3 $</span>
+                    </label>
+                    <input type="checkbox" id="mushrooms" />
+                  </div>
+
+                  <div class="ingredient" draggable="true">
+                    <label for="tomato">
+                      <img
+                        src="./img/ingredients/tomato.svg"
+                        alt="Tomato"
+                        data-name="tomato"
+                      />
+                      <span>3 $</span>
+                    </label>
+                    <input type="checkbox" id="tomato" />
+                  </div>
+
+                  <div class="ingredient" draggable="true">
+                    <label for="olives">
+                      <img
+                        src="./img/ingredients/olives.svg"
+                        alt="Olives"
+                        data-name="olives"
+                      />
+                      <span>3 $</span>
+                    </label>
+                    <input type="checkbox" id="olives" />
+                  </div>
+
+                  <div class="ingredient" draggable="true">
+                    <label for="greenPeppers">
+                      <img
+                        src="./img/ingredients/green-peppers.svg"
+                        alt="Green peppers"
+                        data-name="greenPeppers"
+                      />
+                      <span>3 $</span>
+                    </label>
+                    <input type="checkbox" id="greenPeppers" />
+                  </div>
+
+                  <div class="ingredient" draggable="true">
+                    <label for="onion">
+                      <img
+                        src="./img/ingredients/onions.svg"
+                        alt="Onions"
+                        data-name="onion"
+                      />
+                      <span>3 $</span>
+                    </label>
+                    <input type="checkbox" id="onion" />
+                  </div>
+
+                  <div class="ingredient" draggable="true">
+                    <label for="cheese">
+                      <img
+                        src="./img/ingredients/cheese.svg"
+                        alt="Cheese"
+                        data-name="cheese"
+                      />
+                      <span>3 $</span>
+                    </label>
+                    <input type="checkbox" id="cheese" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fourth screen -->
+      <section class="reserv container">
+        <h4 class="white-fonts">*Terms & Conditions Applied.</h4>
+
+        <div class="form white-fonts">
+          <form action="#" class="form-reserv">
+            <h3>Reservation</h3>
+            <p>Book online or give us a call on +91 1111 222 333</p>
+            <p class="form-subtitle">Between 9:30 am - 10:00 pm</p>
+
+            <div class="form__item">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                placeholder="Mark"
+                class="form-name reqEl"
+                title="Enter only letters"
+              />
+              <div class="hint">Only letters are allowed</div>
+            </div>
+
+            <div class="form__item">
+              <label for="email">E-Mail</label>
+              <input
+                type="text"
+                id="email"
+                placeholder="email@gmail.com"
+                class="form-email reqEl"
+                title='Allowed letters and numbers, also must contain "@" and domain-name'
+              />
+              <div class="hint">
+                The email must be in the format username@domain.com.
+              </div>
+            </div>
+
+            <div class="form__item">
+              <label for="number">Phone Number</label>
+              <input
+                type="text"
+                id="number"
+                placeholder="+380991112233"
+                class="form-number reqEl"
+                title='Enter only numbers and "+" sign'
+              />
+              <div class="hint">Only numbers and the "+" sign are allowed</div>
+            </div>
+
+            <div class="formBtn">
+              <button type="submit" class="reservBtn">Send Order</button>
+              <button type="button" class="reservClean">Clean All</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Fifth screen -->
+      <section class="contacts" id="contacts">
+        <div class="header">
+          <div class="container head">
+            <figure class="header__logo">
+              <img src="./img/01logo.svg" alt="Logo" />
+            </figure>
+
+            <nav>
+              <ul class="header__list">
+                <li class="list-item">
+                  <a href="#">
+                    <img src="./img/05help-icon.svg" alt="Icon" />
+                    Help
+                  </a>
+                </li>
+                <li class="list-item">
+                  <a href="#">
+                    <img src="./img/05sign-icon.svg" alt="Icon" />
+                    Sign In
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="column accordion">
+            <article class="contacts__item dark-gray white-fonts">
+              <div class="left-icon light">
+                <img src="./img/05userIcon.svg" alt="User icon" />
+              </div>
+              <div>
+                <h3>Account</h3>
+                <img
+                  src="./img/menu-row.svg"
+                  alt="User icon"
+                  class="right-icon"
+                />
+              </div>
+
+              <div class="account">
+                <div class="content hide">
+                  <ul>
+                    <li class="accountBtn">Have an account?</li>
+                    <li><a href="#" class="logInBtn">Log in</a></li>
+                  </ul>
+
+                  <ul>
+                    <li class="accountBtn">New to Pizza Family?</li>
+                    <li><a href="#" class="logInBtn">Sign in</a></li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <article class="contacts__item dark-gray white-fonts">
+              <div class="left-icon light">
+                <img src="./img/05location.svg" alt="Location icon" />
+              </div>
+              <div>
+                <h3>Delivery address</h3>
+                <img
+                  src="./img/menu-row.svg"
+                  alt="User icon"
+                  class="right-icon"
+                />
+              </div>
+
+              <div class="contacts__map content hide">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d20333.647909448486!2d30.538068927369178!3d50.427949297390946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1suk!2sua!4v1680531372340!5m2!1suk!2sua"
+                  width="500"
+                  height="350"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </article>
+
+            <article class="contacts__item dark-gray white-fonts">
+              <div class="left-icon light">
+                <img src="./img/05creditCard.svg" alt="Credit card icon" />
+              </div>
+              <div>
+                <h3>Payment</h3>
+                <img
+                  src="./img/menu-row.svg"
+                  alt="User icon"
+                  class="right-icon"
+                />
+              </div>
+
+              <div class="contacts__payment content hide">
+                <p>Please choose the way for payment.</p>
+                <div>
+                  <button type="button" type="button">Card</button>
+                  <button type="button" type="button">Cash</button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="column">
+            <div class="bill dark-gray white-fonts">
+              <div class="bill-title">
+                <img src="./img/05icon-bill.png" alt="icon bill" />
+                <div>
+                  <h2>Wow! Pizza</h2>
+                  <p>Delivered to this location</p>
+                </div>
+              </div>
+
+              <div class="bill-info">
+                <div class="">
+                  <div class="coupon">
+                    <label for="coupon">Apply your coupon code</label>
+                    <input
+                      type="text"
+                      id="coupon"
+                      placeholder="# xxxx"
+                      readonly
+                    />
+                  </div>
+
+                  <div class="output">
+                    <div class="output-name">
+                      Your order:
+                      <ul class="order-list"></ul>
+                    </div>
+                    <button class="output-clean">Clean All</button>
+                  </div>
+                </div>
+
+                <div class="bill-details">
+                  <h3>Bill Details</h3>
+
+                  <div>
+                    <div class="total">
+                      <label for="total-price">Item Total, $</label>
+                      <input type="text" id="total-price" readonly />
+                    </div>
+
+                    <div class="delivery">
+                      <label for="delivery">Delivery Partner Fee</label>
+                      <input type="text" id="delivery" readonly value="FREE" />
+                    </div>
+                  </div>
+
+                  <div class="discount">
+                    <label for="discount">Item Discount, %</label>
+                    <input type="text" id="discount" readonly />
+                  </div>
+
+                  <div class="taxes">
+                    <label for="taxes">Taxes and Charges, %</label>
+                    <input type="text" id="taxes" value="2" readonly />
+                  </div>
+
+                  <div class="totalPay">
+                    <label for="totalPay">To Pay, $</label>
+                    <input type="text" id="totalPay" readonly />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-img">
+          <img src="./img/Pizza-slice 1.png" alt="Pizza slice" />
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="container">©Pizza Family®, 2023. All rights reserved</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./script/scrolling.js"></script>
+    <script src="./script/modals.js"></script>
+    <script src="./script/changeMood.js"></script>
+    <script src="./script/accordion.js"></script>
+    <script src="./script/validation.js"></script>
+    <script src="./script/data.js"></script>
+    <script src="./script/mainScript.js"></script>
+  </body>
+</html>

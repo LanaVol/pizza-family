@@ -3,6 +3,9 @@ const main = document.querySelector("main");
 const menuBlocks = document.querySelectorAll(".menu__block");
 const blocks = Array.from(document.querySelectorAll(".dark-gray"));
 const changeThemeBtn = document.querySelector(".changeThemeBtn");
+import themeBtn from "../img/01themeBtn.svg";
+import themeBtnMoon from "../img/01themeBtnMoon.svg";
+import { form } from "./mainScript";
 
 changeThemeBtn.addEventListener("click", changeColorTheme);
 
@@ -13,7 +16,8 @@ function changeColorTheme(e) {
     main.classList.add("light");
     header.classList.remove("dark");
     header.classList.add("light");
-    changeThemeBtn.setAttribute("src", "./img/01themeBtnMoon.svg");
+    changeThemeBtn.setAttribute("src", themeBtnMoon);
+    // changeThemeBtn.setAttribute("src", "./img/01themeBtnMoon.svg");
     changeMenuFontsColor(e);
     changeBlockStyle(e);
   } else if (main.classList.contains("light")) {
@@ -21,7 +25,8 @@ function changeColorTheme(e) {
     main.classList.add("dark");
     header.classList.remove("light");
     header.classList.add("dark");
-    changeThemeBtn.setAttribute("src", "./img/01themeBtn.svg");
+    changeThemeBtn.setAttribute("src", themeBtn);
+    // changeThemeBtn.setAttribute("src", "./img/01themeBtn.svg");
     changeMenuFontsColor(e);
     changeBlockStyle(e);
   }

@@ -1,3 +1,12 @@
+import {
+  showBannerCoupon,
+  showModalWindowError,
+  showModalWindowSuccess,
+} from "./modals";
+import { validateForm } from "./validation";
+import { cakesList, saucesList, ingredientsList } from "./data";
+import empty from "../img/ingredients/empty.svg";
+
 const navMenu = document.querySelector(".header__list");
 const navBurger = document.querySelector(".nav__burger");
 const coupon = document.querySelector(".coupon");
@@ -245,10 +254,7 @@ function cleanPreviewPizza() {
   allLayersPizza.forEach((layer) => {
     layer.remove();
   });
-  prevPizza.firstElementChild.setAttribute(
-    "src",
-    "./img/ingredients/empty.svg"
-  );
+  prevPizza.firstElementChild.setAttribute("src", empty);
   cleanOwnOrderInfoArray();
 }
 
@@ -258,8 +264,8 @@ function cleanOwnOrderInfoArray() {
 }
 
 // form validation and send to email
-const form = document.querySelector(".form-reserv");
-const requiredEls = Array.from(document.querySelectorAll(".reqEl"));
+export const form = document.querySelector(".form-reserv");
+export const requiredEls = Array.from(document.querySelectorAll(".reqEl"));
 const formCleanBtn = document.querySelector(".reservClean");
 
 form.addEventListener("submit", sendFormToMail);

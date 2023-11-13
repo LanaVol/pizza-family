@@ -1,3 +1,7 @@
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
+import bannerCoupon from "../img/banner.png";
+
 // TEMPLATE MODAL WINDOWS
 function showModalWindowSuccess(message) {
   Swal.fire({
@@ -22,7 +26,7 @@ function showBannerCoupon() {
   Swal.fire({
     width: 950,
     background: "#ff8c4230",
-    imageUrl: "./img/banner.png",
+    imageUrl: bannerCoupon,
     imageWidth: 900,
     imageHeight: 350,
     imageAlt: "Custom image",
@@ -30,3 +34,5 @@ function showBannerCoupon() {
     showCloseButton: true,
   });
 }
+
+export { showBannerCoupon, showModalWindowError, showModalWindowSuccess };

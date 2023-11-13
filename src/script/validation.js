@@ -1,3 +1,5 @@
+import { requiredEls } from "./mainScript";
+
 const hints = Array.from(document.querySelectorAll(".hint"));
 
 // functions for validate form-input on blur
@@ -49,3 +51,5 @@ function checkNumber(input) {
   const check = /^\+?[0-9]{1,15}$/.test(input.value);
   return check;
 }
+
+export { validateForm };

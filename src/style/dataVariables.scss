@@ -54,6 +54,24 @@ $font-kaushan: "Kaushan Script", cursive;
 .black-fonts {
   color: $color-blackFonts;
 }
+.dark-gray {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-width: 2px 0px 0px 2px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(1px);
+  z-index: 2;
+}
+
+.light-gray {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-width: 2px 0px 0px 2px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 10px 19px 30px 5px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(1px);
+  z-index: 2;
+}
 
 // MEDIA SCREEN from 0 to 1050
 @media screen and (max-width: 1050px) {

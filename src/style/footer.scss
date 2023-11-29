@@ -1,0 +1,11 @@
+// -----------------------------------------Footer
+.footer {
+  min-height: 100px;
+  background-color: $color-blackFonts;
+  @include flex-center();
+
+  p {
+    @include fonts($font-quicksand, 20px, 400);
+    color: $color-beige;
+  }
+}

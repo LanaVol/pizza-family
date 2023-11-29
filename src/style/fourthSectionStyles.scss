@@ -1,0 +1,133 @@
+@import "./dataVariables.scss";
+
+// ---------------------Fourth section styles
+.reserv {
+  min-height: 100vh;
+  background-image: url("../img/Frame\ 3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  h4 {
+    padding-top: 30px;
+    padding-bottom: 32px;
+    @include fonts($font-quicksand, 21px, 400);
+    text-align: end;
+  }
+}
+
+.form {
+  max-width: 650px;
+  margin-right: 0;
+  margin-left: auto;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  border-width: 3px 1px 1px 3px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.5);
+  @include fonts($font-quicksand, 21px, 600);
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(1px);
+
+  h3 {
+    padding-top: 38px;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 0.085em;
+    text-transform: uppercase;
+  }
+  p {
+    padding: 7px;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.085em;
+    text-transform: capitalize;
+  }
+}
+
+.form-reserv {
+  height: 100%;
+  padding-bottom: 30px;
+}
+
+.form-subtitle {
+  margin-bottom: 200px;
+}
+
+.form__item {
+  width: 100%;
+  @include flex-center();
+  padding: 20px 60px;
+  position: relative;
+
+  label {
+    width: 40%;
+  }
+  input {
+    border: none;
+    width: 60%;
+    margin-left: 20px;
+    font-size: 20px;
+    padding: 5px 7px;
+    background-color: transparent;
+    @include fonts($font-quicksand, 21px, 600);
+    color: $color-beige;
+    border-bottom: 3px dashed $color-white;
+  }
+}
+
+.error {
+  border-bottom: 3px dashed red !important;
+  filter: drop-shadow(0px 4px 20px rgba(213, 13, 13, 0.5));
+}
+
+.hint {
+  display: none;
+  width: fit-content;
+  max-width: 350px;
+  height: fit-content;
+  // background-color: $color-blackFonts;
+  font-size: 12px;
+  color: red;
+  padding: 3px;
+  position: absolute;
+  right: 40px;
+  bottom: -5px;
+}
+
+.formBtn {
+  padding: 5px;
+  @include flex-center();
+  gap: 10px;
+}
+
+.reservBtn,
+.reservClean {
+  display: block;
+  margin: 0 auto;
+  margin-top: 75px;
+  padding: 15px 40px;
+  margin-bottom: 60px;
+  @include fonts($font-quicksand, 21px, 600);
+  background-color: $color-orange;
+  color: $color-beige;
+  border-radius: 5px;
+  cursor: pointer;
+
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+
+  &:hover {
+    background-color: #f39e6a;
+    color: $color-white;
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+}
+
+// =========MEDIA SCREEN====== from 0 to 1050
+@media screen and (max-width: 1050px) {
+  .form__item {
+    padding: 20px 40px;
+  }
+}

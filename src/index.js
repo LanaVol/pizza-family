@@ -8,3 +8,5 @@ import "./script/data.js";
 import "./script/mainScript.js";
 import "./script/modals.js";
 import "./script/validation.js";
+import "./script/menu-gourmet-pizza.js";
+import "./script/menu-slice-pizza.js";

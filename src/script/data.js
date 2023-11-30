@@ -102,3 +102,56 @@ export const cakesList = [
     category: "cake",
   },
 ];
+
+export const gourmetPizza = [
+  {
+    name: "Barbecue",
+    price: "14.99",
+    ingredients: [
+      "Chicken",
+      "Barbecue Sauce",
+      "Mozzarella",
+      "Onions",
+      "Mushrooms",
+      "Bacon",
+    ],
+  },
+  {
+    name: "Pepperoni",
+    price: "13.99",
+    ingredients: ["Barbecue Sauce", "Mozzarella", "Tomatoes", "Pepperoni"],
+  },
+  {
+    name: "Carbonara",
+    price: "14.99",
+    ingredients: ["Alfredo sauce", "Mozzarella", "Mushrooms", "Ham", "Bacon"],
+  },
+  {
+    name: "Country",
+    price: "15.99",
+    ingredients: [
+      "Pickled cucumbers",
+      "Mozzarella",
+      "Onion",
+      "Garlic sauce",
+      "Bacon",
+      "Ham",
+      "Mushrooms",
+    ],
+  },
+];
+
+export const slicePizza = [
+  {
+    ["Pepperoni"]: "3.7",
+    ["Country"]: "4.3",
+    ["Italian"]: "3.5",
+    ["Beverian"]: "3.8",
+  },
+  {
+    ["Hawaiian"]: "4.2",
+    ["Italian"]: "3.5",
+    ["Country"]: "4.3",
+    ["Provence"]: "3.8",
+  },
+];

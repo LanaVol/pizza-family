@@ -66,13 +66,13 @@
 }
 
 .block-items {
-  ul {
+  li {
     width: 100%;
     display: flex;
     justify-content: space-between;
   }
 
-  li {
+  p {
     padding: 7px 2px;
   }
 }

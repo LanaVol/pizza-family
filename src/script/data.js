@@ -90,16 +90,19 @@ export const cakesList = [
     name: "Size S",
     price: 6,
     category: "cake",
+    className: "sizeS",
   },
   {
     name: "Size M",
     price: 7,
     category: "cake",
+    className: "sizeM",
   },
   {
     name: "Size L",
     price: 8,
     category: "cake",
+    className: "sizeL",
   },
 ];
 

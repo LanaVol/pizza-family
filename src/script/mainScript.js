@@ -45,7 +45,9 @@ function showMenuToMakeOwnPizza() {
 
 //drug and drop constructor pizza, show preview
 const prevPizza = document.querySelector(".prevImg");
-const cakes = Array.from(document.querySelectorAll(".cake"));
+// const cakes = Array.from(document.querySelectorAll(".cake"));//old
+const cakes = document.querySelector(".cakeSize");
+
 const sauces = Array.from(document.querySelectorAll(".sauce"));
 const ingredients = Array.from(document.querySelectorAll(".ingredient"));
 const prevPrice = document.querySelector(".previewPrice");
@@ -88,9 +90,14 @@ function createNewLayerPizza(url) {
 }
 
 // choose cake and add to order
-cakes.forEach((el) => {
-  el.addEventListener("dragstart", getChosenCake);
+cakes.addEventListener("dragstart", (e) => {
+  getChosenCake(e);
 });
+
+//old
+// cakes.forEach((el) => {
+//   el.addEventListener("dragstart", getChosenCake);
+// });
 
 function getChosenCake(e) {
   cakesList.forEach((oneCake) => {

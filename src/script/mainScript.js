@@ -3,7 +3,7 @@ import {
   showModalWindowError,
   showModalWindowSuccess,
 } from "./modals";
-import { validateForm } from "./validation";
+import { validateForm, validationForm } from "./validation";
 import { cakesList, saucesList, ingredientsList } from "./data";
 import empty from "../img/ingredients/empty.svg";
 
@@ -276,7 +276,8 @@ export const requiredEls = Array.from(document.querySelectorAll(".reqEl"));
 const formCleanBtn = document.querySelector(".reservClean");
 
 form.addEventListener("submit", sendFormToMail);
-form.addEventListener("click", validateForm);
+// form.addEventListener("click", validateForm);
+form.addEventListener("change", validationForm);
 
 formCleanBtn.addEventListener("click", () => {
   cleanFormFields();
@@ -304,7 +305,7 @@ function showMessage() {
   });
 }
 
-function sendFormToMail(e) {
+export function sendFormToMail(e) {
   e.preventDefault();
   if (checkObjectValues(dataFromClient)) {
     showModalWindowSuccess("Your order was successfully accepted");

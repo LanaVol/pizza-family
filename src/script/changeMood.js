@@ -1,11 +1,12 @@
+import themeBtn from "../img/01themeBtn.svg";
+import themeBtnMoon from "../img/01themeBtnMoon.svg";
+import { form } from "./mainScript";
+
 const header = document.querySelector(".header");
 const main = document.querySelector("main");
 const menuBlocks = document.querySelectorAll(".menu__block");
 const blocks = Array.from(document.querySelectorAll(".dark-gray"));
 const changeThemeBtn = document.querySelector(".changeThemeBtn");
-import themeBtn from "../img/01themeBtn.svg";
-import themeBtnMoon from "../img/01themeBtnMoon.svg";
-import { form } from "./mainScript";
 
 changeThemeBtn.addEventListener("click", changeColorTheme);
 

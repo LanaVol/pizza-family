@@ -21,27 +21,25 @@ function changeColorTheme(e) {
 }
 
 function toggleColorElements(removeClass, addClass, themeIcon) {
-  main.classList.remove(removeClass);
-  main.classList.add(addClass);
-  header.classList.remove(removeClass);
-  header.classList.add(addClass);
+  toggleClass(main, removeClass, addClass);
+  toggleClass(header, removeClass, addClass);
   changeThemeBtn.setAttribute("src", themeIcon);
+}
+
+function toggleClass(el, removeClass, addClass) {
+  el.classList.remove(removeClass);
+  el.classList.add(addClass);
 }
 
 // change fonts color menu of changing theme
 function changeMenuFontsColor(e) {
   Array.from(menuBlocks).forEach((el) => {
     if (el.classList.contains("beige")) {
-      toogleClass(el, "beige", "brown");
+      toggleClass(el, "beige", "brown");
     } else if (el.classList.contains("brown")) {
-      toogleClass(el, "brown", "beige");
+      toggleClass(el, "brown", "beige");
     }
   });
-}
-
-function toogleClass(el, removeClass, addClass) {
-  el.classList.remove(removeClass);
-  el.classList.add(addClass);
 }
 
 // change style of wrapper blocks and form
@@ -50,19 +48,19 @@ function changeBlockStyle(e) {
     if (el.classList.contains("dark-gray")) {
       el.classList.remove("dark-gray");
       el.style.backgroundColor = "rgba(217, 217, 217, 0.59)";
-      toogleClass(el, "white-fonts", "black-fonts");
+      toggleClass(el, "white-fonts", "black-fonts");
     } else {
       el.style.backgroundColor = "";
       el.classList.add("dark-gray");
-      toogleClass(el, "black-fonts", "white-fonts");
+      toggleClass(el, "black-fonts", "white-fonts");
     }
   });
   const formParent = form.parentElement;
   if (formParent.classList.contains("white-fonts")) {
-    toogleClass(formParent, "white-fonts", "black-fonts");
+    toggleClass(formParent, "white-fonts", "black-fonts");
     formParent.style.backgroundColor = "rgba(217, 217, 217, 0.59)";
   } else if (formParent.classList.contains("black-fonts")) {
-    toogleClass(formParent, "black-fonts", "white-fonts");
+    toggleClass(formParent, "black-fonts", "white-fonts");
     formParent.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
   }
 }

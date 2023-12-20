@@ -1,4 +1,4 @@
-import { gourmetPizza } from "./data";
+import { gourmetPizza } from "../data";
 
 const menuGourmetBlock = document.querySelector(".gourmet");
 const list = [];

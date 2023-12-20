@@ -1,4 +1,4 @@
-import { cakesList } from "./data";
+import { cakesList } from "../data";
 
 const constructorSizes = document.querySelector(".cakeSize");
 const list = [];

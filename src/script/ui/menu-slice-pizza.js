@@ -1,4 +1,4 @@
-import { slicePizza } from "./data";
+import { slicePizza } from "../data";
 
 const menuSlice1Blocks = document.querySelector(".slice1");
 const menuSlice2Blocks = document.querySelector(".slice2");

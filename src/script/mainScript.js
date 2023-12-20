@@ -24,7 +24,7 @@ function showMenuBurgerOnClick() {
 
 // CONSTRUCTOR PIZZA
 // main object about data client and order
-const dataFromClient = {
+export const dataFromClient = {
   name: "",
   email: "",
   phone: "",
@@ -276,7 +276,6 @@ export const requiredEls = Array.from(document.querySelectorAll(".reqEl"));
 const formCleanBtn = document.querySelector(".reservClean");
 
 form.addEventListener("submit", sendFormToMail);
-// form.addEventListener("click", validateForm);
 form.addEventListener("change", validationForm);
 
 formCleanBtn.addEventListener("click", () => {

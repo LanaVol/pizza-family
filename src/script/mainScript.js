@@ -3,23 +3,26 @@ import {
   showModalWindowError,
   showModalWindowSuccess,
 } from "./modals";
-import { validateForm, validationForm } from "./validation";
+import { validationForm } from "./validation";
 import { cakesList, saucesList, ingredientsList } from "./data";
 import empty from "../img/ingredients/empty.svg";
 
 const navMenu = document.querySelector(".header__list");
-const navBurger = document.querySelector(".nav__burger");
-const coupon = document.querySelector(".coupon");
+const header = document.querySelector(".header");
 const reservSection = document.querySelector(".reserv");
 
-// show banner-discount
-coupon.addEventListener("click", showBannerCoupon);
+header.addEventListener("click", handleHeaderFunction);
 
-// onclick burgerBtn for mobileScreen
-navBurger.addEventListener("click", showMenuBurgerOnClick);
+function handleHeaderFunction(e) {
+  const element = e.target.parentElement.classList;
 
-function showMenuBurgerOnClick() {
-  navMenu.classList.toggle("showNav");
+  if (element.contains("coupon")) {
+    // show banner-discount
+    showBannerCoupon();
+  } else if (element.contains("nav__burger")) {
+    // show/hide header nav for mobileScreen
+    navMenu.classList.toggle("showNav");
+  }
 }
 
 // CONSTRUCTOR PIZZA
@@ -45,9 +48,7 @@ function showMenuToMakeOwnPizza() {
 
 //drug and drop constructor pizza, show preview
 const prevPizza = document.querySelector(".prevImg");
-// const cakes = Array.from(document.querySelectorAll(".cake"));//old
 const cakes = document.querySelector(".cakeSize");
-
 const sauces = Array.from(document.querySelectorAll(".sauce"));
 const ingredients = Array.from(document.querySelectorAll(".ingredient"));
 const prevPrice = document.querySelector(".previewPrice");
@@ -93,11 +94,6 @@ function createNewLayerPizza(url) {
 cakes.addEventListener("dragstart", (e) => {
   getChosenCake(e);
 });
-
-//old
-// cakes.forEach((el) => {
-//   el.addEventListener("dragstart", getChosenCake);
-// });
 
 function getChosenCake(e) {
   cakesList.forEach((oneCake) => {

@@ -9,27 +9,30 @@ import withOlives from "../img/constructor-img/with-olives.svg";
 import withGrpeppers from "../img/constructor-img/with-grpeppers.svg";
 import withOnion from "../img/constructor-img/with-onion.svg";
 import withCheese from "../img/constructor-img/with-cheese.svg";
+import ketchup from "../img/ingredients/ketchup.jpg";
+import cheeseSause from "../img/ingredients/cheeseSauce.jpg";
+import barbecue from "../img/ingredients/sauceBarb.jpg";
 
 export const saucesList = [
   {
     name: "ketchup",
     price: 1,
     category: "sauce",
-    src: "./img/ingredients/ketchup.jpg",
+    src: ketchup,
     prevImg: withKetchup,
   },
   {
     name: "cheeseSauce",
     price: 1,
     category: "sauce",
-    src: "./img/ingredients/cheeseSauce.jpg",
+    src: cheeseSause,
     prevImg: withCheeseSauce,
   },
   {
     name: "barbecue",
     price: 1,
     category: "sauce",
-    src: "./img/ingredients/sauceBarb.jpg",
+    src: barbecue,
     prevImg: withBarbecue,
   },
 ];

@@ -1,14 +1,16 @@
-import { cakesList } from "../data";
+import { cakesList, saucesList } from "../data";
 
 const constructorSizes = document.querySelector(".cakeSize");
-const list = [];
+const constructorSauces = document.querySelector(".sauces");
+const list = { sizes: [], sauces: [] };
+// const list = [];
 
 cakesList.map((item) => {
   const pizzaSize = `<div class="${item.className} cake">
                       <label for="${item.className}">
                         <img
                           src="./img/${item.className}.svg"
-                          alt="Small size icon"
+                          alt="Size icon"
                           draggable="true"
                           data-name="${item.name}"
                         />
@@ -16,6 +18,25 @@ cakesList.map((item) => {
                       </label>
                       <input type="radio" id="${item.className}" name="size" />
                     </div>`;
-  list.push(pizzaSize);
+  list.sizes.push(pizzaSize);
 });
-constructorSizes.insertAdjacentHTML("afterbegin", list.join(""));
+constructorSizes.insertAdjacentHTML("afterbegin", list.sizes.join(""));
+
+saucesList.map((item, index) => {
+  const pizzaSauce = `<div class="${item.category}">
+                        <label for="${item.category}${index + 1}">
+                          <img
+                            src="${item.src}"
+                            alt="Sauce icon"
+                            data-name="${item.name}"
+                            draggable="true"
+                          />
+                          <span>${item.name} ${item.price}$</span>
+                        </label>
+                        <input type="radio"
+                          id="${item.category}${index + 1}" 
+                          name="${item.category}" />
+                      </div>`;
+  list.sauces.push(pizzaSauce);
+});
+constructorSauces.insertAdjacentHTML("afterbegin", list.sauces.join(""));

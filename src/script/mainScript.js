@@ -70,12 +70,13 @@ function dropElementToPreview(e) {
   ownOrder
     .sort((a, b) => a.data - b.data)
     .forEach((el) => {
-      if (el.category === "cake") {
-        prevSize.innerHTML = el.name;
-      } else if (el.category === "sauce") {
-        prevPizza.firstElementChild.setAttribute("src", el.prevImg);
-      } else if (el.category === "ingredient") {
-        createNewLayerPizza(el.withIngredient);
+      switch (el.category) {
+        case "cake":
+          return (prevSize.innerHTML = el.name);
+        case "sauce":
+          return prevPizza.firstElementChild.setAttribute("src", el.prevImg);
+        case "ingredient":
+          return createNewLayerPizza(el.withIngredient);
       }
     });
   calcTotalSumOnPreview();

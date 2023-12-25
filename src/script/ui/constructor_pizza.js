@@ -31,7 +31,12 @@ saucesList.map((item, index) => {
                             data-name="${item.name}"
                             draggable="true"
                           />
-                          <span>${item.name} ${item.price}$</span>
+                          <span>${
+                            item.name === "cheeseSauce"
+                              ? item.name[0].toUpperCase() +
+                                item.name.slice(1, 6)
+                              : item.name[0].toUpperCase() + item.name.slice(1)
+                          } ${item.price}$</span>
                         </label>
                         <input type="radio"
                           id="${item.category}${index + 1}" 

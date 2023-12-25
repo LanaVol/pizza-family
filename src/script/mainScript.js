@@ -49,7 +49,9 @@ function showMenuToMakeOwnPizza() {
 //drug and drop constructor pizza, show preview
 const prevPizza = document.querySelector(".prevImg");
 const cakes = document.querySelector(".cakeSize");
-const sauces = Array.from(document.querySelectorAll(".sauce"));
+// const sauces = Array.from(document.querySelectorAll(".sauce"));
+const sauces = document.querySelector(".sauces");
+
 const ingredients = Array.from(document.querySelectorAll(".ingredient"));
 const prevPrice = document.querySelector(".previewPrice");
 const prevSize = document.querySelector(".previewSize");
@@ -114,8 +116,8 @@ function getChosenCake(e) {
 }
 
 // choose sauces
-sauces.forEach((el) => {
-  el.addEventListener("dragstart", addSauceIngredient);
+sauces.addEventListener("dragstart", (e) => {
+  addSauceIngredient(e);
 });
 
 function addSauceIngredient(e) {

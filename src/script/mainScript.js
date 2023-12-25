@@ -48,9 +48,7 @@ function showMenuToMakeOwnPizza() {
 
 //drug and drop constructor pizza, show preview
 const prevPizza = document.querySelector(".prevImg");
-const cakes = document.querySelector(".cakeSize");
-// const sauces = Array.from(document.querySelectorAll(".sauce"));
-const sauces = document.querySelector(".sauces");
+const constructorBlockMenu = document.querySelector(".constructor");
 
 const ingredients = Array.from(document.querySelectorAll(".ingredient"));
 const prevPrice = document.querySelector(".previewPrice");
@@ -93,9 +91,19 @@ function createNewLayerPizza(url) {
   inscription.style.backgroundImage = `url(${url})`;
 }
 
-// choose cake and add to order
-cakes.addEventListener("dragstart", (e) => {
-  getChosenCake(e);
+// choose size | cake | ingredient and add to order
+constructorBlockMenu.addEventListener("dragstart", (e) => {
+  switch (e.target.getAttribute("data-category")) {
+    case "cake":
+      getChosenCake(e);
+      break;
+    case "sauce":
+      addSauceIngredient(e);
+      break;
+    case "ingredient":
+      addIngredientsToPizza(e);
+      break;
+  }
 });
 
 function getChosenCake(e) {
@@ -114,11 +122,6 @@ function getChosenCake(e) {
     }
   });
 }
-
-// choose sauces
-sauces.addEventListener("dragstart", (e) => {
-  addSauceIngredient(e);
-});
 
 function addSauceIngredient(e) {
   saucesList.forEach((sauce) => {

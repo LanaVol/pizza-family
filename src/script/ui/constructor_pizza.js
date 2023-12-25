@@ -13,6 +13,7 @@ cakesList.map((item) => {
                           alt="Size icon"
                           draggable="true"
                           data-name="${item.name}"
+                          data-category="${item.category}"
                         />
                         <span>${item.name} ${item.price}$</span>
                       </label>
@@ -23,12 +24,13 @@ cakesList.map((item) => {
 constructorSizes.insertAdjacentHTML("afterbegin", list.sizes.join(""));
 
 saucesList.map((item, index) => {
-  const pizzaSauce = `<div class="${item.category}">
+  const pizzaSauce = `<li class="${item.category}">
                         <label for="${item.category}${index + 1}">
                           <img
                             src="${item.src}"
                             alt="Sauce icon"
                             data-name="${item.name}"
+                            data-category="${item.category}"
                             draggable="true"
                           />
                           <span>${
@@ -41,7 +43,7 @@ saucesList.map((item, index) => {
                         <input type="radio"
                           id="${item.category}${index + 1}" 
                           name="${item.category}" />
-                      </div>`;
+                      </li>`;
   list.sauces.push(pizzaSauce);
 });
 constructorSauces.insertAdjacentHTML("afterbegin", list.sauces.join(""));

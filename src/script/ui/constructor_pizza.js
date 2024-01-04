@@ -1,8 +1,9 @@
-import { cakesList, saucesList } from "../data";
+import { cakesList, saucesList, ingredientsList } from "../data";
 
 const constructorSizes = document.querySelector(".cakeSize");
 const constructorSauces = document.querySelector(".sauces");
-const list = { sizes: [], sauces: [] };
+const constructorIngredients = document.querySelector(".ingredients-list");
+const list = { sizes: [], sauces: [], ingredients: [] };
 // const list = [];
 
 cakesList.map((item) => {
@@ -15,7 +16,7 @@ cakesList.map((item) => {
                           data-name="${item.name}"
                           data-category="${item.category}"
                         />
-                        <span>${item.name} ${item.price}$</span>
+                        <span>${item.name} ${item.price} $</span>
                       </label>
                       <input type="radio" id="${item.className}" name="size" />
                     </div>`;
@@ -38,7 +39,7 @@ saucesList.map((item, index) => {
                               ? item.name[0].toUpperCase() +
                                 item.name.slice(1, 6)
                               : item.name[0].toUpperCase() + item.name.slice(1)
-                          } ${item.price}$</span>
+                          } ${item.price} $</span>
                         </label>
                         <input type="radio"
                           id="${item.category}${index + 1}" 
@@ -47,3 +48,25 @@ saucesList.map((item, index) => {
   list.sauces.push(pizzaSauce);
 });
 constructorSauces.insertAdjacentHTML("afterbegin", list.sauces.join(""));
+
+ingredientsList.map((item) => {
+  const pizzaIngredient = `<li class="${item.category}" draggable="true">
+                            <label for="${item.name}">
+                            <div data-name="${item.name}" class="ingredientImg" style="background-position: ${item.imgPosition.x}px ${item.imgPosition.y}px"></div>
+                              <span>${item.price} $</span>
+                            </label>
+                            <input type="checkbox" id="${item.name}" />
+                          </li>`;
+  list.ingredients.push(pizzaIngredient);
+});
+constructorIngredients.insertAdjacentHTML(
+  "afterbegin",
+  list.ingredients.join("")
+);
+console.log(list.ingredients);
+
+// <img
+//   src="./img/ingredients/${item.name}.svg"
+//   alt="${item.name}"
+//   data-name="${item.name}"
+// />

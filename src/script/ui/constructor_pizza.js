@@ -4,7 +4,6 @@ const constructorSizes = document.querySelector(".cakeSize");
 const constructorSauces = document.querySelector(".sauces");
 const constructorIngredients = document.querySelector(".ingredients-list");
 const list = { sizes: [], sauces: [], ingredients: [] };
-// const list = [];
 
 cakesList.map((item) => {
   const pizzaSize = `<div class="${item.className} cake">
@@ -50,9 +49,9 @@ saucesList.map((item, index) => {
 constructorSauces.insertAdjacentHTML("afterbegin", list.sauces.join(""));
 
 ingredientsList.map((item) => {
-  const pizzaIngredient = `<li class="${item.category}" draggable="true">
+  const pizzaIngredient = `<li class="${item.category}" draggable="true" data-category="${item.category}" data-name="${item.name}">
                             <label for="${item.name}">
-                            <div data-name="${item.name}" class="ingredientImg" style="background-position: ${item.imgPosition.x}px ${item.imgPosition.y}px"></div>
+                            <div class="ingredientImg" style="background-position: ${item.imgPosition.x}px ${item.imgPosition.y}px" ></div>
                               <span>${item.price} $</span>
                             </label>
                             <input type="checkbox" id="${item.name}" />
@@ -63,10 +62,3 @@ constructorIngredients.insertAdjacentHTML(
   "afterbegin",
   list.ingredients.join("")
 );
-console.log(list.ingredients);
-
-// <img
-//   src="./img/ingredients/${item.name}.svg"
-//   alt="${item.name}"
-//   data-name="${item.name}"
-// />

@@ -49,8 +49,6 @@ function showMenuToMakeOwnPizza() {
 //drug and drop constructor pizza, show preview
 const prevPizza = document.querySelector(".prevImg");
 const constructorBlockMenu = document.querySelector(".constructor");
-
-const ingredients = Array.from(document.querySelectorAll(".ingredient"));
 const prevPrice = document.querySelector(".previewPrice");
 const prevSize = document.querySelector(".previewSize");
 
@@ -141,12 +139,8 @@ function addSauceIngredient(e) {
   });
 }
 
-// choose ingredients
-ingredients.forEach((el) => {
-  el.addEventListener("dragstart", addIngredientsToPizza);
-});
-
 function addIngredientsToPizza(e) {
+  console.log("eee");
   ingredientsList.forEach((ingredient) => {
     if (e.target.getAttribute("data-name") === ingredient.name) {
       if (ownOrder.length === 0) {

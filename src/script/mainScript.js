@@ -96,10 +96,10 @@ constructorBlockMenu.addEventListener("dragstart", (e) => {
       getChosenCake(e);
       break;
     case "sauce":
-      addSauceIngredient(e);
+      addIngredientsToPizza(e, saucesList);
       break;
     case "ingredient":
-      addIngredientsToPizza(e);
+      addIngredientsToPizza(e, ingredientsList);
       break;
   }
 });
@@ -121,37 +121,19 @@ function getChosenCake(e) {
   });
 }
 
-function addSauceIngredient(e) {
-  saucesList.forEach((sauce) => {
-    if (e.target.getAttribute("data-name") === sauce.name) {
+// handle choose sauce and ingredients to pizza's preview
+function addIngredientsToPizza(e, ingredientsList) {
+  ingredientsList.forEach((element) => {
+    if (e.target.getAttribute("data-name") === element.name) {
       if (ownOrder.length === 0) {
         showModalWindowError("First choose the size:)");
       } else if (ownOrder.length !== 0) {
-        const i = ownOrder.findIndex((obj) => obj.name === sauce.name);
+        const i = ownOrder.findIndex((obj) => obj.name === element.name);
         if (i !== -1) {
           ownOrder[i].quantity++;
           ownOrder[i].data = new Date();
         } else {
-          ownOrder.push({ ...sauce, quantity: 1, data: new Date() });
-        }
-      }
-    }
-  });
-}
-
-function addIngredientsToPizza(e) {
-  console.log("eee");
-  ingredientsList.forEach((ingredient) => {
-    if (e.target.getAttribute("data-name") === ingredient.name) {
-      if (ownOrder.length === 0) {
-        showModalWindowError("First choose the size:)");
-      } else if (ownOrder.length !== 0) {
-        const i = ownOrder.findIndex((obj) => obj.name === ingredient.name);
-        if (i !== -1) {
-          ownOrder[i].quantity++;
-          ownOrder[i].data = new Date();
-        } else {
-          ownOrder.push({ ...ingredient, quantity: 1, data: new Date() });
+          ownOrder.push({ ...element, quantity: 1, data: new Date() });
         }
       }
     }

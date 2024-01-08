@@ -148,13 +148,20 @@
 .sizeS,
 .sizeM,
 .sizeL,
-.sauce,
-.ingredient {
+.sauce {
   img {
     width: 100%;
     height: auto;
     cursor: pointer;
   }
+}
+
+.ingredientImg {
+  width: 165px;
+  height: 165px;
+  border: 1px solid red;
+  background-image: url("../img/ingredients/ingredients_sprites.png");
+  background-repeat: no-repeat;
 }
 
 .previewBtn {

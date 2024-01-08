@@ -43,6 +43,10 @@
   @include fonts($font-kosugi, 32px, 400);
 }
 
+.menu__block {
+  color: inherit;
+}
+
 .menu__block:first-child {
   grid-column: 1;
   grid-row: 1;

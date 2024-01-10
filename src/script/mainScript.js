@@ -6,10 +6,10 @@ import {
 import { validationForm } from "./validation";
 import { cakesList, saucesList, ingredientsList } from "./data";
 import empty from "../img/ingredients/empty.svg";
+import { Pizza } from "./Pizza";
 
 const navMenu = document.querySelector(".header__list");
-const header = document.querySelector(".header");
-const reservSection = document.querySelector(".reserv");
+export const header = document.querySelector(".header");
 
 header.addEventListener("click", handleHeaderFunction);
 
@@ -28,13 +28,13 @@ function handleHeaderFunction(e) {
 // CONSTRUCTOR PIZZA
 // main object about data client and order
 export const dataFromClient = {
-  name: "",
-  email: "",
-  phone: "",
-  orders: [],
-  price: 0,
-  discount: 0,
-  info: "Pizza with: ",
+  // name: "",
+  // email: "",
+  // phone: "",
+  // orders: [],
+  // price: 0,
+  // discount: 0,
+  // info: "Pizza with: ",
 };
 
 // click btn madeOwn, show constructor-menu and make own pizza
@@ -47,15 +47,18 @@ function showMenuToMakeOwnPizza() {
 }
 
 //drug and drop constructor pizza, show preview
-const prevPizza = document.querySelector(".prevImg");
+// const prevPizza = document.querySelector(".prevImg");
 const constructorBlockMenu = document.querySelector(".constructor");
 const prevPrice = document.querySelector(".previewPrice");
 const prevSize = document.querySelector(".previewSize");
 
 let ownOrder = []; //array for add chosen ingredients
+const testPizza = new Pizza();
 
-prevPizza.addEventListener("dragover", preventEvent);
-prevPizza.addEventListener("drop", dropElementToPreview);
+// prevPizza.addEventListener("dragover", preventEvent);
+// prevPizza.addEventListener("drop", dropElementToPreview);
+testPizza.prevPizza.addEventListener("dragover", preventEvent);
+testPizza.prevPizza.addEventListener("drop", dropElementToPreview);
 
 function preventEvent(e) {
   e.preventDefault();
@@ -72,22 +75,24 @@ function dropElementToPreview(e) {
         case "cake":
           return (prevSize.innerHTML = el.name);
         case "sauce":
-          return prevPizza.firstElementChild.setAttribute("src", el.prevImg);
+          // return prevPizza.firstElementChild.setAttribute("src", el.prevImg);
+          return testPizza.chooseSauseToPizzaPreview(el.prevImg);
         case "ingredient":
-          return createNewLayerPizza(el.withIngredient);
+          // return createNewLayerPizza(el.withIngredient);
+          return testPizza.createNewLayerPizza(el.withIngredient);
       }
     });
   calcTotalSumOnPreview();
 }
 
 // create new layer pizza for preview
-function createNewLayerPizza(url) {
-  const inscription = document.createElement("div");
+// function createNewLayerPizza(url) {
+//   const inscription = document.createElement("div");
 
-  inscription.classList.add("inscription");
-  prevPizza.appendChild(inscription);
-  inscription.style.backgroundImage = `url(${url})`;
-}
+//   inscription.classList.add("inscription");
+//   prevPizza.appendChild(inscription);
+//   inscription.style.backgroundImage = `url(${url})`;
+// }
 
 // choose size | cake | ingredient and add to order
 constructorBlockMenu.addEventListener("dragstart", (e) => {
@@ -151,16 +156,19 @@ function calcTotalSumOnPreview() {
 }
 
 // add to order created pizza after click on btn addToOrder
-const orderBtn = document.querySelector(".addToOrder");
-const cleanAllPreview = document.querySelector(".cleanAll");
 const outputInfoBill = document.querySelector(".order-list");
 const totalPriceFieldInBill = document.querySelector("#total-price");
 const discountInBill = document.querySelector("#discount");
 const toPayFieldBill = document.querySelector("#totalPay");
 const cleanAllInBill = document.querySelector(".output-clean");
 
-orderBtn.addEventListener("click", addToOrderPizza);
-cleanAllPreview.addEventListener("click", cleanPreviewPizza);
+constructorBlockMenu.addEventListener("click", (e) => {
+  if (e.target.classList.contains("addToOrder")) {
+    addToOrderPizza();
+  } else if (e.target.classList.contains("cleanAll")) {
+    cleanPreviewPizza();
+  }
+});
 cleanAllInBill.addEventListener("click", cleanPizzaOrderList);
 
 function addToOrderPizza() {

@@ -14,18 +14,32 @@ export class Pizza {
     this.constructorBlockMenu = DOMHelper.select(".constructor");
     this.previewSize = DOMHelper.select(".previewSize");
     this.dragOverHandle();
-    this.dropHandle();
+    this.dropElementToPreview();
     this.dragStartHandle();
   }
 
   dragOverHandle() {
-    this.prevPizza.addEventListener("dragover", (e) => this.preventEvent(e));
+    this.prevPizza.addEventListener("dragover", (e) => e.preventDefault());
   }
 
-  dropHandle() {
-    this.prevPizza.addEventListener("drop", (e) =>
-      this.dropElementToPreview(e)
-    );
+  dropElementToPreview() {
+    this.prevPizza.addEventListener("drop", (e) => {
+      e.preventDefault();
+      console.log("2", this.ownOrder);
+
+      this.ownOrder
+        .sort((a, b) => a.data - b.data)
+        .forEach((el) => {
+          switch (el.category) {
+            case "cake":
+              return (this.previewSize.innerHTML = el.name);
+            case "sauce":
+              return this.chooseSauseToPizzaPreview(el.prevImg);
+            case "ingredient":
+              return this.createNewLayerPizza(el.withIngredient);
+          }
+        });
+    });
   }
 
   dragStartHandle() {
@@ -44,10 +58,6 @@ export class Pizza {
     });
   }
 
-  preventEvent(e) {
-    e.preventDefault();
-  }
-
   chooseSauseToPizzaPreview(img) {
     return this.prevPizza.firstElementChild.setAttribute("src", img);
   }
@@ -57,24 +67,6 @@ export class Pizza {
     DOMHelper.addClass(inscription, "inscription");
     this.prevPizza.appendChild(inscription);
     inscription.style.backgroundImage = `url(${url})`;
-  }
-
-  dropElementToPreview(e) {
-    this.preventEvent(e);
-    console.log("2", this.ownOrder);
-
-    this.ownOrder
-      .sort((a, b) => a.data - b.data)
-      .forEach((el) => {
-        switch (el.category) {
-          case "cake":
-            return (this.previewSize.innerHTML = el.name);
-          case "sauce":
-            return this.chooseSauseToPizzaPreview(el.prevImg);
-          case "ingredient":
-            return this.createNewLayerPizza(el.withIngredient);
-        }
-      });
   }
 
   getChosenCake(e) {

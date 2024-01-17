@@ -35,12 +35,16 @@ export class DOMHelper {
     DOMHelper.addClass(element, addClass);
   }
 
-  // static isContainsClass(element, className) {
-  //   if (!DOMHelper.#validateDOMElement(element)) return;
+  static isContainsClass(element, className) {
+    if (!DOMHelper.#validateDOMElement(element)) return;
 
-  //   if (element.classList.contains(className)) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
+    if (element.classList.contains(className)) {
+      return true;
+    }
+    return false;
+  }
+
+  static setSRCAttributeElement(element, value) {
+    return element.setAttribute("src", value);
+  }
 }

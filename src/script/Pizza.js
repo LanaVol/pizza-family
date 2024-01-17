@@ -2,20 +2,20 @@ import { DOMHelper } from "./DOMHelper";
 import { UserFormData } from "./UserFormData";
 import { cakesList, ingredientsList, saucesList } from "./data";
 import { showModalWindowError } from "./modals";
+import empty from "../img/ingredients/empty.svg";
 
 export class Pizza {
   constructor() {
     this.user = new UserFormData();
-    this.orders = [];
-    this.price = 0;
-    this.discount = 0;
     this.ownOrder = [];
     this.prevPizza = DOMHelper.select(".prevImg");
     this.constructorBlockMenu = DOMHelper.select(".constructor");
     this.previewSize = DOMHelper.select(".previewSize");
+    this.previewPrice = DOMHelper.select(".previewPrice").firstElementChild;
     this.dragOverHandle();
     this.dropElementToPreview();
     this.dragStartHandle();
+    this.pizzaBtnHandle();
   }
 
   dragOverHandle() {
@@ -25,7 +25,6 @@ export class Pizza {
   dropElementToPreview() {
     this.prevPizza.addEventListener("drop", (e) => {
       e.preventDefault();
-      console.log("2", this.ownOrder);
 
       this.ownOrder
         .sort((a, b) => a.data - b.data)
@@ -39,6 +38,7 @@ export class Pizza {
               return this.createNewLayerPizza(el.withIngredient);
           }
         });
+      this.calcTotalSumOnPreview();
     });
   }
 
@@ -59,7 +59,10 @@ export class Pizza {
   }
 
   chooseSauseToPizzaPreview(img) {
-    return this.prevPizza.firstElementChild.setAttribute("src", img);
+    return DOMHelper.setSRCAttributeElement(
+      this.prevPizza.firstElementChild,
+      img
+    );
   }
 
   createNewLayerPizza(url) {
@@ -102,5 +105,64 @@ export class Pizza {
         }
       }
     });
+  }
+
+  // calculate totalSum from one creating pizza and show price in preview
+  calcTotalSumOnPreview() {
+    let totalSum = 0;
+
+    this.ownOrder.forEach((el) => {
+      totalSum += el.quantity * el.price;
+      this.previewPrice.innerHTML = totalSum;
+    });
+  }
+
+  checkPizzaBeforeOrder() {
+    // console.log(this.ownOrder);
+    // const categories = ["cake", "sauce", "ingredient"];
+    // let isComplete = false;
+    // this.ownOrder.forEach((el) => {
+    //   categories.forEach((category) => {
+    //     if (el.category === category) {
+    //       isComplete = true;
+    //     }
+    //   });
+    // });
+    // console.log(isComplete);
+    // return isComplete;
+  }
+
+  addChosenPizzaToOrder() {
+    this.checkPizzaBeforeOrder();
+  }
+
+  pizzaBtnHandle() {
+    this.constructorBlockMenu.addEventListener("click", (e) => {
+      if (DOMHelper.isContainsClass(e.target, "addToOrder")) {
+        this.addChosenPizzaToOrder();
+      } else if (DOMHelper.isContainsClass(e.target, "cleanAll")) {
+        this.cleanPreviewPizza();
+      }
+    });
+  }
+
+  // to clean array of chosen ingredients for ability to create new pizza
+  cleanOwnOrderInfoArray() {
+    this.ownOrder = [];
+  }
+
+  // clean preview pizza in constructor
+  cleanPreviewPizza() {
+    this.previewPrice.innerHTML = "";
+    const allLayersPizza = Array.from(
+      document.querySelectorAll(".inscription")
+    );
+    allLayersPizza.forEach((layer) => {
+      layer.remove();
+    });
+
+    DOMHelper.setSRCAttributeElement(this.prevPizza.firstElementChild, empty);
+
+    this.cleanOwnOrderInfoArray();
   }
 }

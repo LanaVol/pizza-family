@@ -2,6 +2,9 @@ export class DOMHelper {
   static select(selector) {
     return document.querySelector(selector);
   }
+  static selectorAll(selector) {
+    return Array.from(document.querySelectorAll(selector));
+  }
 
   static #validateDOMElement(element) {
     if (element instanceof Element) {
@@ -22,12 +25,6 @@ export class DOMHelper {
     element.classList.remove(className);
   }
 
-  static setTextContent(element, text) {
-    if (!DOMHelper.#validateDOMElement(element)) return;
-
-    element.textContent = text;
-  }
-
   static toggleClass(element, removeClass, addClass) {
     if (!DOMHelper.#validateDOMElement(element)) return;
 
@@ -44,7 +41,22 @@ export class DOMHelper {
     return false;
   }
 
+  static setTextContent(element, text) {
+    if (!DOMHelper.#validateDOMElement(element)) return;
+
+    element.textContent = text;
+  }
+
   static setSRCAttributeElement(element, value) {
+    if (!DOMHelper.#validateDOMElement(element)) return;
     return element.setAttribute("src", value);
+  }
+
+  static createDiv() {
+    return document.createElement("div");
+  }
+
+  static appendChild(parent, child) {
+    return parent.appendChild(child);
   }
 }

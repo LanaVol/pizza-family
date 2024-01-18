@@ -1,13 +1,16 @@
 import { DOMHelper } from "./DOMHelper";
 import { UserFormData } from "./UserFormData";
 import { cakesList, ingredientsList, saucesList } from "./data";
-import { showModalWindowError } from "./modals";
+import { showModalWindowError, showModalWindowSuccess } from "./modals";
 import empty from "../img/ingredients/empty.svg";
+import { PizzaOrder } from "./PizzaOrder";
 
 export class Pizza {
   constructor() {
     this.user = new UserFormData();
     this.ownOrder = [];
+    this.currentPizzaTotalSum = 0;
+    this.pizzaProductsCategories = ["cake", "sauce", "ingredient"];
     this.prevPizza = DOMHelper.select(".prevImg");
     this.constructorBlockMenu = DOMHelper.select(".constructor");
     this.previewSize = DOMHelper.select(".previewSize");
@@ -66,9 +69,9 @@ export class Pizza {
   }
 
   createNewLayerPizza(url) {
-    const inscription = document.createElement("div");
+    const inscription = DOMHelper.createDiv();
     DOMHelper.addClass(inscription, "inscription");
-    this.prevPizza.appendChild(inscription);
+    DOMHelper.appendChild(this.prevPizza, inscription);
     inscription.style.backgroundImage = `url(${url})`;
   }
 
@@ -109,31 +112,40 @@ export class Pizza {
 
   // calculate totalSum from one creating pizza and show price in preview
   calcTotalSumOnPreview() {
-    let totalSum = 0;
-
+    // let totalSum = 0;
+    // this.ownOrder.forEach((el) => {
+    //   totalSum += el.quantity * el.price;
+    //   this.previewPrice.innerHTML = totalSum;
+    // });
     this.ownOrder.forEach((el) => {
-      totalSum += el.quantity * el.price;
-      this.previewPrice.innerHTML = totalSum;
+      this.currentPizzaTotalSum += el.quantity * el.price;
+      this.previewPrice.innerHTML = this.currentPizzaTotalSum;
     });
   }
 
   checkPizzaBeforeOrder() {
-    // console.log(this.ownOrder);
-    // const categories = ["cake", "sauce", "ingredient"];
-    // let isComplete = false;
-    // this.ownOrder.forEach((el) => {
-    //   categories.forEach((category) => {
-    //     if (el.category === category) {
-    //       isComplete = true;
-    //     }
-    //   });
-    // });
-    // console.log(isComplete);
-    // return isComplete;
+    const chosenCategories = this.ownOrder.map((el) => {
+      return el.category;
+    });
+
+    let isComplete = this.pizzaProductsCategories.every((category) => {
+      return chosenCategories.includes(category);
+    });
+    console.log(isComplete);
+    return isComplete;
   }
 
   addChosenPizzaToOrder() {
-    this.checkPizzaBeforeOrder();
+    if (this.checkPizzaBeforeOrder()) {
+      let pizza = JSON.parse(JSON.stringify(this.ownOrder));
+      this.user.orders.push(pizza);
+      showModalWindowSuccess("Successfully added to cart");
+      PizzaOrder.calcResultToPayWithDiscount();
+      this.cleanOwnOrderInfoArray();
+      this.cleanPreviewPizza();
+    } else {
+      showModalWindowError("Not all ingredient categories are selected:(");
+    }
   }
 
   pizzaBtnHandle() {
@@ -154,9 +166,8 @@ export class Pizza {
   // clean preview pizza in constructor
   cleanPreviewPizza() {
     this.previewPrice.innerHTML = "";
-    const allLayersPizza = Array.from(
-      document.querySelectorAll(".inscription")
-    );
+    const allLayersPizza = DOMHelper.selectorAll(".inscription");
+
     allLayersPizza.forEach((layer) => {
       layer.remove();
     });

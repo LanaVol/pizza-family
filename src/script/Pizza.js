@@ -1,5 +1,5 @@
 import { DOMHelper } from "./DOMHelper";
-import { UserFormData } from "./UserFormData";
+import { UserFormData, user } from "./UserFormData";
 import { cakesList, ingredientsList, saucesList } from "./data";
 import { showModalWindowError, showModalWindowSuccess } from "./modals";
 import empty from "../img/ingredients/empty.svg";
@@ -7,7 +7,7 @@ import { PizzaOrder } from "./PizzaOrder";
 
 export class Pizza {
   constructor() {
-    this.user = new UserFormData();
+    // this.user = new UserFormData();
     this.ownOrder = [];
     this.currentPizzaTotalSum = 0;
     this.pizzaProductsCategories = ["cake", "sauce", "ingredient"];
@@ -112,11 +112,7 @@ export class Pizza {
 
   // calculate totalSum from one creating pizza and show price in preview
   calcTotalSumOnPreview() {
-    // let totalSum = 0;
-    // this.ownOrder.forEach((el) => {
-    //   totalSum += el.quantity * el.price;
-    //   this.previewPrice.innerHTML = totalSum;
-    // });
+    this.currentPizzaTotalSum = 0;
     this.ownOrder.forEach((el) => {
       this.currentPizzaTotalSum += el.quantity * el.price;
       this.previewPrice.innerHTML = this.currentPizzaTotalSum;
@@ -131,18 +127,19 @@ export class Pizza {
     let isComplete = this.pizzaProductsCategories.every((category) => {
       return chosenCategories.includes(category);
     });
-    console.log(isComplete);
+
     return isComplete;
   }
 
   addChosenPizzaToOrder() {
     if (this.checkPizzaBeforeOrder()) {
       let pizza = JSON.parse(JSON.stringify(this.ownOrder));
-      this.user.orders.push(pizza);
+      user.order.addPizzaToOrder(pizza);
       showModalWindowSuccess("Successfully added to cart");
-      PizzaOrder.calcResultToPayWithDiscount();
+      user.order.calcResultToPayWithDiscount();
       this.cleanOwnOrderInfoArray();
       this.cleanPreviewPizza();
+      this.currentPizzaTotalSum = 0;
     } else {
       showModalWindowError("Not all ingredient categories are selected:(");
     }

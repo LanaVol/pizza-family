@@ -1,29 +1,48 @@
+import { DOMHelper } from "./DOMHelper";
+import { UserFormData, user } from "./UserFormData";
+
 export class PizzaOrder {
   constructor() {
-    this.totalOrderSum = 0;
+    this.orderSum = 0;
+    this.orders = [];
+    this.totalPrice = 0;
+    this.discount = 0;
+    this.totalPriceFieldInBill = DOMHelper.select("#total-price");
+    this.discountInBill = DOMHelper.select("#discount");
+    this.toPayFieldBill = DOMHelper.select("#totalPay");
   }
 
-  calcResultToPayWithDiscount() {
-    dataFromClient.orders.forEach((els) => {
-      let totalSumOfOnePizza = 0;
+  addPizzaToOrder(pizza) {
+    this.orders.push(pizza);
+  }
 
+  showInfoAboutOrderInBill() {}
+
+  calcResultToPayWithDiscount() {
+    let orderSum = 0;
+    this.orders.forEach((els) => {
+      let totalSumOfOnePizza = 0;
       els.forEach((el) => {
-        if (el.name === "Size L" && dataFromClient.orders.length > 1) {
+        if (el.name === "Size L" && this.orders.length > 1) {
           // discount 20% if chosen more than one pizza including size L
-          dataFromClient.discount = 0.2;
+          this.discount = 0.2;
         }
         totalSumOfOnePizza += el.quantity * el.price;
       });
-      this.totalOrderSum += totalSumOfOnePizza;
+
+      orderSum += totalSumOfOnePizza;
+      this.orderSum = orderSum;
     });
-    showInfoAboutOrderInBill();
-    totalPriceFieldInBill.value = this.totalOrderSum; //order-sum without discont and show at Item Total(bill)
-    discountInBill.value = dataFromClient.discount * 100;
-    dataFromClient.price = (
-      this.totalOrderSum -
-      this.totalOrderSum * dataFromClient.discount +
-      this.totalOrderSum * 0.02
+
+    this.showInfoAboutOrderInBill();
+    this.totalPriceFieldInBill.value = this.orderSum; //order-sum without discont and show at Item Total(bill)
+    this.discountInBill.value = this.discount * 100;
+    this.totalPrice = (
+      this.orderSum -
+      this.orderSum * this.discount +
+      this.orderSum * 0.02
     ).toFixed(2);
-    toPayFieldBill.value = dataFromClient.price;
+
+    this.toPayFieldBill.value = this.totalPrice;
   }
 }

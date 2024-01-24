@@ -3,11 +3,9 @@ import { UserFormData, user } from "./UserFormData";
 import { cakesList, ingredientsList, saucesList } from "./data";
 import { showModalWindowError, showModalWindowSuccess } from "./modals";
 import empty from "../img/ingredients/empty.svg";
-import { PizzaOrder } from "./PizzaOrder";
 
 export class Pizza {
   constructor() {
-    // this.user = new UserFormData();
     this.ownOrder = [];
     this.currentPizzaTotalSum = 0;
     this.pizzaProductsCategories = ["cake", "sauce", "ingredient"];
@@ -69,7 +67,7 @@ export class Pizza {
   }
 
   createNewLayerPizza(url) {
-    const inscription = DOMHelper.createDiv();
+    const inscription = DOMHelper.createElement("div");
     DOMHelper.addClass(inscription, "inscription");
     DOMHelper.appendChild(this.prevPizza, inscription);
     inscription.style.backgroundImage = `url(${url})`;
@@ -165,10 +163,7 @@ export class Pizza {
     this.previewPrice.innerHTML = "";
     const allLayersPizza = DOMHelper.selectorAll(".inscription");
 
-    allLayersPizza.forEach((layer) => {
-      layer.remove();
-    });
-
+    DOMHelper.removeListEls(allLayersPizza);
     DOMHelper.setSRCAttributeElement(this.prevPizza.firstElementChild, empty);
 
     this.cleanOwnOrderInfoArray();

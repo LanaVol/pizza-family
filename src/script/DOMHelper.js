@@ -52,11 +52,23 @@ export class DOMHelper {
     return element.setAttribute("src", value);
   }
 
-  static createDiv() {
-    return document.createElement("div");
+  static createElement(element) {
+    return document.createElement(element);
   }
 
   static appendChild(parent, child) {
     return parent.appendChild(child);
+  }
+
+  static removeListEls(els) {
+    if (Array.isArray(els)) {
+      els.forEach((el) => {
+        el.remove();
+      });
+    } else {
+      Array.from(els).forEach((el) => {
+        el.remove();
+      });
+    }
   }
 }

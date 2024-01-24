@@ -1,3 +1,5 @@
+import { DOMHelper } from "./DOMHelper";
+import { Form } from "./Form";
 import { PizzaOrder } from "./PizzaOrder";
 
 export class UserFormData {
@@ -6,6 +8,13 @@ export class UserFormData {
     this.email = email;
     this.phone = phone;
     this.order = new PizzaOrder();
+    this.info = "Pizza with: ";
+  }
+
+  cleanFormData() {
+    this.name = "";
+    this.email = "";
+    this.phone = "";
   }
 }
 

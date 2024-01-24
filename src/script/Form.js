@@ -1,5 +1,6 @@
 import { DOMHelper } from "./DOMHelper";
 import { user } from "./UserFormData";
+import { showModalWindowError, showModalWindowSuccess } from "./modals";
 
 export class Form {
   constructor() {
@@ -8,6 +9,7 @@ export class Form {
     this.formCleanBtn = DOMHelper.select(".reservClean");
     this.hints = DOMHelper.selectorAll(".hint");
     this.onChangeFormField();
+    this.sendFormToMail();
   }
 
   onChangeFormField() {
@@ -41,7 +43,7 @@ export class Form {
       ) {
         this.displayErrorPlaceholder(input, index);
       } else {
-        console.log(input.value);
+        user[input.id] = input.value;
       }
     }
   }
@@ -76,11 +78,60 @@ export class Form {
         return this.checkName;
       case "email":
         return this.checkEmail;
-      case "number":
+      case "phone":
         return this.checkNumber;
       default:
         return () => true;
     }
+  }
+
+  sendFormToMail() {
+    this.form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      if (this.checkObjectValues(user)) {
+        showModalWindowSuccess("Your order was successfully accepted");
+        this.showMessage();
+        this.send(user);
+        this.cleanFormFields();
+        // cleanPizzaOrderList();
+        user.cleanFormData();
+      } else {
+        if (user.order.orders.length === 0) {
+          showModalWindowError("Your cart is empty");
+        } else {
+          showModalWindowError("Please, enter complete information");
+        }
+        return;
+      }
+    });
+  }
+
+  // check if object  is full
+  checkObjectValues(obj) {
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (typeof obj[key] === "string" && obj[key].trim() === "") {
+          return false;
+        }
+        if (Array.isArray(obj[key]) && obj[key].length === 0) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  showMessage() {
+    user.order.orders.forEach((pizzas) => {
+      pizzas.forEach((pizza) => {
+        // dataFromClient.info += ` ${pizza.name}/`;
+      });
+    });
+  }
+
+  send(obj) {
+    console.log(obj);
   }
 
   // clean form fields onclick btn

@@ -90,8 +90,7 @@ export class PizzaOrder {
       this.discountInBill.value = "";
       this.toPayFieldBill.value = "";
       this.setEmptyOrder();
-
-      // dataFromClient.info = "Pizza with: ";
+      user.info = "Pizza with: ";
     });
   }
 

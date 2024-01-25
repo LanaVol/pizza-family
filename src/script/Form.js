@@ -10,6 +10,7 @@ export class Form {
     this.hints = DOMHelper.selectorAll(".hint");
     this.onChangeFormField();
     this.sendFormToMail();
+    this.cleanBtnFormData();
   }
 
   onChangeFormField() {
@@ -95,6 +96,7 @@ export class Form {
         this.send(user);
         this.cleanFormFields();
         // cleanPizzaOrderList();
+        user.order.cleanAllBillInfo();
         user.cleanFormData();
       } else {
         if (user.order.orders.length === 0) {
@@ -114,7 +116,13 @@ export class Form {
         if (typeof obj[key] === "string" && obj[key].trim() === "") {
           return false;
         }
+        if (obj[key] === undefined) {
+          return false;
+        }
         if (Array.isArray(obj[key]) && obj[key].length === 0) {
+          return false;
+        }
+        if (obj.order.orders.length === 0) {
           return false;
         }
       }
@@ -131,13 +139,14 @@ export class Form {
   }
 
   send(obj) {
-    console.log(obj);
+    console.log("//", obj);
   }
 
   // clean form fields onclick btn
   cleanFormFields() {
     this.requiredFormFields.forEach((el) => {
-      this.setEmptyValue(el.value);
+      // this.setEmptyValue(el.value);
+      el.value = "";
     });
   }
 

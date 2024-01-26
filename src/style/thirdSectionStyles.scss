@@ -160,8 +160,10 @@
   width: 165px;
   height: 165px;
   border: 1px solid red;
-  background-image: url("../img/ingredients/ingredients_sprites.png");
+  // background-image: url("../img/ingredients/ingredients_sprites.png");
+  background-image: url("../img/ingredients/ingredients.png");
   background-repeat: no-repeat;
+  background-size: 160%;
 }
 
 .previewBtn {

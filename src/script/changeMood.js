@@ -8,10 +8,8 @@ const menuBlock = DOMHelper.select(".menu__main-block");
 const blocks = Array.from(document.querySelectorAll(".dark-gray"));
 const changeThemeBtn = document.querySelector(".changeThemeBtn");
 
-changeThemeBtn.addEventListener("click", changeColorTheme);
-
 // change dark/light background
-function changeColorTheme(e) {
+export function changeColorTheme(e) {
   if (body.classList.contains("dark")) {
     DOMHelper.toggleClass(body, "dark", "light");
     DOMHelper.toggleClass(menuBlock, "beige", "brown");

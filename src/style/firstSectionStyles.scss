@@ -74,15 +74,6 @@
   width: 100%;
 }
 
-.changeThemeBtn {
-  display: block;
-  position: absolute;
-  right: 60px;
-  bottom: 62px;
-  border-bottom: 10px;
-  cursor: pointer;
-}
-
 // MEDIA SCREEN from 0 to 1050
 @media screen and (max-width: 1050px) {
   .home > .container,
@@ -121,11 +112,6 @@
     justify-content: center;
     margin: 0 auto;
   }
-
-  .changeThemeBtn {
-    right: 30px;
-    bottom: 5px;
-  }
 }
 
 // MEDIA SCREEN from 1050px to max
@@ -148,9 +134,5 @@
   .announce__subtitle,
   .announce__input-box {
     margin-bottom: 72px;
-  }
-
-  .changeThemeBtn {
-    right: 135px;
   }
 }

@@ -23,6 +23,20 @@
   padding: 35px 16px;
 }
 
+.header__btn {
+  @include flex-center();
+  gap: 10px;
+  z-index: 10;
+}
+
+.changeThemeBtn {
+  display: block;
+  width: 40px;
+  height: auto;
+  border-bottom: 10px;
+  cursor: pointer;
+}
+
 .nav__burger {
   padding-right: 40px;
   cursor: pointer;
